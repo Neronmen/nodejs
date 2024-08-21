@@ -15,6 +15,7 @@ module.exports = (query) => {
       class: "",
       status: "inactive",
     },
+
   ];
 
   if (query.status) {
