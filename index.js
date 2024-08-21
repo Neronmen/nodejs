@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
+require('dotenv').config()
 const route = require("./routes/client/index.route");
 const routeAdmin = require("./routes/admin/index.route");
 const systemConfig = require("./config/system")
@@ -12,7 +13,7 @@ const session = require(`express-session`)
 const slug = require('mongoose-slug-updater');
 
 const database = require("./config/database");
-require('dotenv').config()
+
 app.use(bodyParser.urlencoded({ extended: false }))
 
 //Flash

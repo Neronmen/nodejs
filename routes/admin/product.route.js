@@ -8,6 +8,8 @@ const controller = require("../../controller/admin/product.controller.js");
 const upload = multer();
 const validate = require("../../validates/admin/product.validate.js");
 
+
+
 router.get("/", controller.index);
 
 router.patch("/change-status/:status/:id", controller.changeStatus);
@@ -21,7 +23,8 @@ router.get("/create", controller.create);
 router.post(
   "/create",
   upload.single("thumbnail"),
-  uploadMiddleware.upload,
+  uploadMiddleware.upload
+,
   validate.create,
   controller.createPost
 );

@@ -4,13 +4,13 @@ const cloudinary = require("cloudinary").v2;
 const streamifier = require("streamifier");
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.api_key,
-  api_secret: process.env.api_secret, 
+  api_key: process.env.CLOUD_KEY,
+  api_secret: process.env.CLOUD_SECRET,
 });
 
 
 // End upload Online
-module.exports.upload = (req, res, next)  => {
+module.exports.upload = function (req, res, next)  {
     if (req.file) {
       let streamUpload = (req) => {
         return new Promise((resolve, reject) => {
@@ -26,7 +26,7 @@ module.exports.upload = (req, res, next)  => {
       };
       async function upload(req) {
         let result = await streamUpload(req);
-        // console.log(result);
+        console.log(result);
         req.body[req.file.fieldname] = result.secure_url;
         next(); 
       }
